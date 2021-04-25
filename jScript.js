@@ -1,23 +1,28 @@
 var slideIndex = 1;
       showSlides(slideIndex);
-    const stopButton = document.getElementById()
-    const record = function(stream) {
-      const options = {mimeType: 'audio/webm'}; 
-      const record = []
-      const Recorder = new MediaRecorder(stream, options);
-      Recorder.addEventListener('dataavailable', function (yuh)
-      {
-        if (yuh.data.size > 0)
-        {
-            record.push(yuh.data);
-        }
-        if(stopTime == true && stopped == false)
-        {
-            Recorder.stop();
-            stopped = true;
-        } 
-      });
+    const startButton = document.getElementById(startButton);
+    const stopButton = document.getElementById(stopButton);
+    if (navigator.mediaDevices.getUserMedia)
+    {
+        console.log("getUserMedia isn't broken! Woo!");
     }
+      const record = function(stream) {
+        const options = {mimeType: 'audio/webm'}; 
+        const record = []
+        const Recorder = new MediaRecorder(stream, options);
+        Recorder.addEventListener('dataavailable', function (yuh)
+        {
+            if (yuh.data.size > 0)
+            {
+                record.push(yuh.data);
+            }
+            if(stopTime == true && stopped == false)
+            {
+                Recorder.stop();
+                stopped = true;
+            } 
+        });
+        }   
       // Next/previous controls
       function plusSlides(n) {
         showSlides(slideIndex += n);

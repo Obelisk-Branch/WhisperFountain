@@ -1,0 +1,1 @@
+Google speech recog API won't work for production - limited to 50 requests per day etc.
